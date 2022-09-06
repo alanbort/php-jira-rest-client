@@ -266,6 +266,16 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     }
 
     /**
+     * Get curl option CURLOPT_HTTP_EXTRA_HEADERS.
+     *
+     * @return string
+     */
+    public function isCurlOptHTTPExtraHeaders(): ?string
+    {
+        return $this->curlOptHTTPExtraHeaders;
+    }
+
+    /**
      * Get curl option CURLOPT_USERAGENT.
      *
      * @return string
