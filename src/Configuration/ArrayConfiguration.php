@@ -13,6 +13,9 @@ namespace JiraRestApi\Configuration;
  */
 class ArrayConfiguration extends AbstractConfiguration
 {
+    /**
+     * @param array $configuration
+     */
     public function __construct(array $configuration)
     {
         $this->jiraLogEnabled = true;
@@ -24,12 +27,12 @@ class ArrayConfiguration extends AbstractConfiguration
         $this->curlOptSslCertPassword = '';
         $this->curlOptSslKey = '';
         $this->curlOptSslKeyPassword = '';
-        $this->curlOptExtraHTTPHeader = '';
         $this->curlOptVerbose = false;
         $this->cookieAuthEnabled = false;
         $this->cookieFile = 'jira-cookie.txt';
         $this->curlOptUserAgent = $this->getDefaultUserAgentString();
-        $this->serviceDeskId = null;
+
+        $this->useV3RestApi = false;
 
         $this->useTokenBasedAuth = false;
         $this->personalAccessToken = '';

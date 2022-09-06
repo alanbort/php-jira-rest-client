@@ -28,11 +28,6 @@ class User implements \JsonSerializable
     /**
      * @var string
      */
-    public $accountId;
-
-    /**
-     * @var string
-     */
     public $name;
 
     /**
@@ -80,7 +75,6 @@ class User implements \JsonSerializable
      */
     public $password;
 
-    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array_filter(get_object_vars($this));

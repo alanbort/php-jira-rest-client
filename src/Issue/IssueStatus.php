@@ -22,7 +22,6 @@ class IssueStatus implements \JsonSerializable
     /* @var \JiraRestApi\Issue\Statuscategory */
     public $statuscategory;
 
-    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array_filter(get_object_vars($this));

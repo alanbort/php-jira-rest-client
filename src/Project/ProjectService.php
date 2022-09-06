@@ -2,7 +2,6 @@
 
 namespace JiraRestApi\Project;
 
-use JiraRestApi\Component\Component;
 use JiraRestApi\Issue\IssueType;
 use JiraRestApi\Issue\Reporter;
 use JiraRestApi\Issue\Version;
@@ -28,7 +27,7 @@ class ProjectService extends \JiraRestApi\JiraClient
         $prjs = $this->json_mapper->mapArray(
             json_decode($ret, false),
             new \ArrayObject(),
-            Project::class
+            '\JiraRestApi\Project\Project'
         );
 
         return $prjs;
@@ -93,26 +92,6 @@ class ProjectService extends \JiraRestApi\JiraClient
         $json = json_decode($ret);
         $results = array_map(function ($elem) {
             return $this->json_mapper->map($elem, new IssueType());
-        }, $json);
-
-        return $results;
-    }
-
-    /**
-     * Get the Components defined in a Jira Project.
-     *
-     * @param string|int $projectIdOrKey
-     *
-     * @throws \JiraRestApi\JiraException
-     *
-     * @return \JiraRestApi\Component\Component[]
-     */
-    public function getProjectComponents($projectIdOrKey)
-    {
-        $ret = $this->exec($this->uri."/$projectIdOrKey/components", null);
-        $json = json_decode($ret);
-        $results = array_map(function ($elem) {
-            return $this->json_mapper->map($elem, new Component());
         }, $json);
 
         return $results;
@@ -257,8 +236,14 @@ class ProjectService extends \JiraRestApi\JiraClient
 
     /**
      * get specified's project versions.
+     *
+     * @param string|int $projectIdOrKey
+     *
+     * @throws \JiraRestApi\JiraException
+     *
+     * @return Version[] array of version
      */
-    public function getVersions(string $projectIdOrKey): \ArrayObject
+    public function getVersions($projectIdOrKey)
     {
         $ret = $this->exec($this->uri."/$projectIdOrKey/versions");
 
@@ -372,9 +357,9 @@ class ProjectService extends \JiraRestApi\JiraClient
 
         return $ret;
     }
-
-    /**
-     * Archive a project only available for premium subscription.
+    
+     /**
+     * Archive a project only available for premium subscription
      *
      * @param string $projectIdOrKey
      *
@@ -390,8 +375,9 @@ class ProjectService extends \JiraRestApi\JiraClient
      */
     public function archiveProject($projectIdOrKey)
     {
-        $ret = $this->exec($this->uri.'/'.$projectIdOrKey.'/archive', null, 'PUT');
+        $ret = $this->exec($this->uri . '/' . $projectIdOrKey . '/archive', null, 'PUT');
 
         return $ret;
     }
+    
 }

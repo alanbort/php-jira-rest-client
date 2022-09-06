@@ -39,7 +39,6 @@ class GroupSearchResult implements \JsonSerializable
     /** @var \JiraRestApi\User\User[] */
     public $values;
 
-    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array_filter(get_object_vars($this));
