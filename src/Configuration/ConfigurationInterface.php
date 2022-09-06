@@ -97,6 +97,13 @@ interface ConfigurationInterface
     public function isCurlOptVerbose();
 
     /**
+     * Curl options CURLOPT_HTTP_EXTRA_HEADERS.
+     *
+     * @return string
+     */
+    public function isCurlOptHTTPExtraHeaders();
+
+    /**
      * Get curl option CURLOPT_USERAGENT.
      *
      * @return string

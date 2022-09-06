@@ -35,6 +35,7 @@ class DotEnvConfiguration extends AbstractConfiguration
         $this->curlOptSslKeyPassword = $this->env('CURLOPT_SSL_KEY_PASSWORD');
         $this->curlOptUserAgent = $this->env('CURLOPT_USERAGENT', $this->getDefaultUserAgentString());
         $this->curlOptVerbose = $this->env('CURLOPT_VERBOSE', false);
+        $this->curlOptHTTPExtraHeaders = $this->env('CURLOPT_EXTRA_HTTP_HEADERS', false);
         $this->proxyServer = $this->env('PROXY_SERVER');
         $this->proxyPort = $this->env('PROXY_PORT');
         $this->proxyUser = $this->env('PROXY_USER');

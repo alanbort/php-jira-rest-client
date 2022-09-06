@@ -78,6 +78,13 @@ abstract class AbstractConfiguration implements ConfigurationInterface
     protected $curlOptVerbose;
 
     /**
+     * Curl options CURLOPT_HTTP_EXTRA_HEADERS.
+     *
+     * @var string
+     */
+    protected $curlOptHTTPExtraHeaders;
+
+    /**
      * HTTP header 'Authorization: Bearer {token}' for OAuth.
      *
      * @var string
